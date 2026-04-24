@@ -23,15 +23,15 @@ jobs:
     name: OctaneIntegration#${{github.event.action}}#${{github.event.workflow_run.id}}
     steps:
       - name: GitHub Actions ALM Octane Integration
-        uses: MicroFocus/alm-octane-github-actions-integration@v25.2.1
+        uses: MicroFocus/alm-octane-github-actions-integration@0c811efb268e4da46b191083de58644e6bfb4353
         with:
-          octaneUrl:          ${{ vars.OCTANE_URL }}
-          octaneSharedSpace:  ${{ vars.OCTANE_SHARED_SPACE }}
-          octaneWorkspace:    ${{ vars.OCTANE_WORKSPACE }}
+          octaneUrl:          https://almoctane-eur.saas.microfocus.com
+          octaneSharedSpace:  411029
+          octaneWorkspace:    12001
           octaneClientId:     ${{ secrets.OCTANE_CLIENT_ID }}
           octaneClientSecret: ${{ secrets.OCTANE_CLIENT_SECRET }}
           githubToken:        ${{ secrets.GITHUB_TOKEN }}
-          serverBaseUrl:    https://github.com/davbaster/junit-calculator-gha
+          serverBaseUrl:    https://github.com/davbaster/junit-calculator-gha2
           pipelineNamePattern: '${workflow_name}'
           unitTestResultsGlobPattern: '**/target/surefire-reports/*.xml'
           testingFramework: 'junit'
