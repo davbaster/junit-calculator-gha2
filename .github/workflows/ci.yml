@@ -11,6 +11,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set up JDK
         uses: actions/setup-java@v5.2.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'
       - name: Run JUnit tests
         run: mvn test
       - name: Log workflow execution parameters
@@ -20,7 +23,7 @@ jobs:
   octane_integration:
     needs: test
     runs-on: ubuntu-latest
-    name: OctaneIntegration#${{github.event.action}}#${{github.event.workflow_run.id}}
+    name: OctaneIntegration#${{github.event.action}}#${{github.run_id}}
     steps:
       - name: GitHub Actions ALM Octane Integration
         uses: MicroFocus/alm-octane-github-actions-integration@0c811efb268e4da46b191083de58644e6bfb4353
