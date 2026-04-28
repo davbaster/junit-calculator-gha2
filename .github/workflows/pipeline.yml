@@ -1,0 +1,24 @@
+name: pipeline
+
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v5.2.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Run JUnit tests
+        run: mvn test
+      - name: Log workflow execution parameters
+        run: |
+          echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
