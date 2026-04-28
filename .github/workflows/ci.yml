@@ -31,8 +31,8 @@ jobs:
           octaneUrl: 'https://almoctane-eur.saas.microfocus.com'
           octaneSharedSpace: 411029
           octaneWorkspace: 12001
-          octaneClientId: ${{ secrets.OCTANE_CLIENT_ID }}
-          octaneClientSecret: ${{ secrets.OCTANE_CLIENT_SECRET }}
+          octaneClientId: ${{ secrets.SDP_CLIENT_ID }}
+          octaneClientSecret: ${{ secrets.SDP_CLIENT_SECRET }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           serverBaseUrl: https://github.com/davbaster/junit-calculator-gha2
           pipelineNamePattern: '${workflow_name}'
