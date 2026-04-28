@@ -4,6 +4,12 @@ on:
   pull_request:
     types: [opened, edited, reopened]
 
+# Minimum required permissions for the integration workflow
+permissions:
+  actions: read
+  contents: read
+  pull-requests: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -35,6 +41,7 @@ jobs:
           octaneClientSecret: ${{ secrets.SDP_CLIENT_SECRET }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           serverBaseUrl: https://github.com/davbaster/junit-calculator-gha2
+          logLevel: '2'
           pipelineNamePattern: '${workflow_name}'
           unitTestResultsGlobPattern: '**/target/surefire-reports/*.xml'
           testingFramework: 'junit'
