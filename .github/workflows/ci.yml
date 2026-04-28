@@ -32,5 +32,5 @@ jobs:
           serverBaseUrl: https://github.com/davbaster/junit-calculator-gha2
           logLevel: '2'
           pipelineNamePattern: '${workflow_name}'
-          unitTestResultsGlobPattern: '**/target/surefire-reports/*.xml'
+          unitTestResultsGlobPattern: "**/*.xml"
           testingFramework: 'junit'
