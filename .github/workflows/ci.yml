@@ -32,7 +32,7 @@ jobs:
     name: OctaneIntegration#${{github.event.action}}#${{github.run_id}}
     steps:
       - name: GitHub Actions ALM Octane Integration
-        uses: MicroFocus/alm-octane-github-actions-integration@0c811efb268e4da46b191083de58644e6bfb4353
+        uses: opentext/sdp-github-actions-integration@v26.2.1
         with:
           octaneUrl: 'https://almoctane-eur.saas.microfocus.com'
           octaneSharedSpace: 411029
