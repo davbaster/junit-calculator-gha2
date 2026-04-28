@@ -1,8 +1,10 @@
 name: CI
 
 on:
-  pull_request:
-    types: [opened, edited, reopened]
+  workflow_run:
+    workflows:
+      - 'Maven Test'
+    types: [requested, in_progress, completed]
 
 # Minimum required permissions for the integration workflow
 permissions:
@@ -10,27 +12,11 @@ permissions:
   contents: read
   pull-requests: read
 
-env: 
-    NODE_TLS_REJECT_UNAUTHORIZED: 0
+env:
+  NODE_TLS_REJECT_UNAUTHORIZED: 0
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK
-        uses: actions/setup-java@v5.2.0
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-      - name: Run JUnit tests
-        run: mvn test
-      - name: Log workflow execution parameters
-        run: |
-            echo "execution_parameter:: $(echo '${{ toJson(github.event.inputs) }}' | jq -c .)"
-
   octane_integration:
-    needs: test
     runs-on: ubuntu-latest
     name: OctaneIntegration#${{github.event.action}}#${{github.run_id}}
     steps:
